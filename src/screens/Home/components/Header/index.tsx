@@ -7,7 +7,7 @@ export const Header = () => {
       <View style={styles.content}>
         <Image
           style={styles.logo}
-          source={require("../../assets/rocket.png")}
+          source={require("../../../../assets/rocket.png")}
         />
         <View style={styles.title}>
           <Text style={[styles.titleText, styles.titleFirstPart]}>to</Text>

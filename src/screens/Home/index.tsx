@@ -1,24 +1,16 @@
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
-import { Header } from "../../components/Header";
+import { Header } from "./components/Header";
 import { PlusCircle } from "phosphor-react-native";
+import { TaskCreationForm } from "./components/TaskCreationForm";
+import { EmptyTaskList } from "./components/EmptyTaskList";
 
 export const Home = () => {
   return (
     <View style={styles.homeContainer}>
       <Header />
 
-      <View style={styles.taskCreationContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Adicione uma nova tarefa"
-          placeholderTextColor="#808080"
-        />
-
-        <TouchableOpacity style={styles.button}>
-          <PlusCircle size={16} color="#F2F2F2" />
-        </TouchableOpacity>
-      </View>
+      <TaskCreationForm />
 
       <View style={styles.tasksContainer}>
         <View style={styles.header}>
@@ -41,19 +33,7 @@ export const Home = () => {
           </View>
         </View>
 
-        <View style={styles.emptyTasksContainer}>
-          <Image source={require("../../assets/clipboard.png")} />
-
-          <View style={styles.message}>
-            <Text style={[styles.messageText, styles.mainMessageText]}>
-              Você ainda não tem tarefas cadastradas
-            </Text>
-
-            <Text style={styles.messageText}>
-              Crie tarefas e organize seus itens a fazer
-            </Text>
-          </View>
-        </View>
+        <EmptyTaskList />
       </View>
     </View>
   );
