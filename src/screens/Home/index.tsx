@@ -1,9 +1,19 @@
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { styles } from "./styles";
 import { Header } from "./components/Header";
 import { PlusCircle } from "phosphor-react-native";
 import { TaskCreationForm } from "./components/TaskCreationForm";
 import { EmptyTaskList } from "./components/EmptyTaskList";
+import { TaskCard } from "./components/TaskCard";
+
+const tasks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 export const Home = () => {
   return (
@@ -33,7 +43,15 @@ export const Home = () => {
           </View>
         </View>
 
-        <EmptyTaskList />
+        <FlatList
+          style={styles.taskList}
+          data={tasks}
+          keyExtractor={(item) => String(item)}
+          renderItem={({ item }) => <TaskCard />}
+          showsVerticalScrollIndicator={false}
+        />
+
+        {/* <EmptyTaskList /> */}
       </View>
     </View>
   );
