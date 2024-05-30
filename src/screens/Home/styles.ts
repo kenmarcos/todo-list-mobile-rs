@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     marginTop: 32,
     marginHorizontal: 24,
   },
-  header: {
+  tasksHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
   },

@@ -1,5 +1,6 @@
 import { StatusBar } from "react-native";
 import { Home } from "./src/screens/Home";
+import { TasksContextProvider } from "./src/contexts/TasksContext";
 
 export default function App() {
   return (
@@ -10,7 +11,9 @@ export default function App() {
         translucent
       />
 
-      <Home />
+      <TasksContextProvider>
+        <Home />
+      </TasksContextProvider>
     </>
   );
 }
