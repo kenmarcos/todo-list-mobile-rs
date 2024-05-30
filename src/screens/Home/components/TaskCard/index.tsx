@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Trash } from "phosphor-react-native";
@@ -14,7 +14,16 @@ export const TaskCard = ({ task }: TaskCardProps) => {
   const { deleteTask } = useContext(TasksContext);
 
   const handleDeleteTask = () => {
-    deleteTask(task.id);
+    Alert.alert("Deletar", "Tem certeza que deseja deletar esta tarefa?", [
+      {
+        text: "Cancelar",
+        style: "cancel",
+      },
+      {
+        text: "Deletar",
+        onPress: () => deleteTask(task.id),
+      },
+    ]);
   };
 
   return (
