@@ -10,6 +10,9 @@ import { TasksContext } from "../../contexts/TasksContext";
 export const Home = () => {
   const { tasks } = useContext(TasksContext);
 
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter((task) => task.done).length;
+
   return (
     <View style={styles.homeContainer}>
       <Header />
@@ -23,7 +26,7 @@ export const Home = () => {
               Criadas
             </Text>
             <View style={styles.badge}>
-              <Text style={styles.badgeText}>0</Text>
+              <Text style={styles.badgeText}>{totalTasks}</Text>
             </View>
           </View>
 
@@ -32,7 +35,7 @@ export const Home = () => {
               Concluídas
             </Text>
             <View style={styles.badge}>
-              <Text style={styles.badgeText}>0</Text>
+              <Text style={styles.badgeText}>{completedTasks}</Text>
             </View>
           </View>
         </View>
