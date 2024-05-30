@@ -3,12 +3,20 @@ import { styles } from "./styles";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Trash } from "phosphor-react-native";
 import { Task } from "../../../../reducers/tasks/reducer";
+import { useContext } from "react";
+import { TasksContext } from "../../../../contexts/TasksContext";
 
 interface TaskCardProps {
   task: Task;
 }
 
 export const TaskCard = ({ task }: TaskCardProps) => {
+  const { deleteTask } = useContext(TasksContext);
+
+  const handleDeleteTask = () => {
+    deleteTask(task.id);
+  };
+
   return (
     <View style={styles.taskContainer}>
       <BouncyCheckbox
@@ -21,7 +29,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
         isChecked={task.done}
       />
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleDeleteTask}>
         <Trash size={24} color="#808080" />
       </TouchableOpacity>
     </View>
