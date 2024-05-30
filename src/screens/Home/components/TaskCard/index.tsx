@@ -11,7 +11,7 @@ interface TaskCardProps {
 }
 
 export const TaskCard = ({ task }: TaskCardProps) => {
-  const { deleteTask } = useContext(TasksContext);
+  const { deleteTask, toggleTask } = useContext(TasksContext);
 
   const handleDeleteTask = () => {
     Alert.alert("Deletar", "Tem certeza que deseja deletar esta tarefa?", [
@@ -26,6 +26,13 @@ export const TaskCard = ({ task }: TaskCardProps) => {
     ]);
   };
 
+  const handleCheckTask = (isChecked: boolean) => {
+    toggleTask({
+      taskId: task.id,
+      isDone: isChecked,
+    });
+  };
+
   return (
     <View style={styles.taskContainer}>
       <BouncyCheckbox
@@ -36,6 +43,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
         fillColor="#5E60CE"
         innerIconStyle={{ borderWidth: 2 }}
         isChecked={task.done}
+        onPress={(isChecked: boolean) => handleCheckTask(isChecked)}
       />
 
       <TouchableOpacity style={styles.button} onPress={handleDeleteTask}>
